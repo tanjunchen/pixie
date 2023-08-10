@@ -75,7 +75,7 @@ spec:
     spec:
       containers:
       - name: carts
-        image: gcr.io/pixie-oss/demo-apps/px-sock-shop/carts:latest
+        image: registry.baidubce.com/csm/demo-apps/px-sock-shop/carts:latest
         env:
          - name: ZIPKIN
            value: zipkin.jaeger.svc.cluster.local
@@ -277,7 +277,7 @@ spec:
     spec:
       containers:
       - name: front-end
-        image: gcr.io/pixie-oss/demo-apps/px-sock-shop/front-end:latest
+        image: registry.baidubce.com/csm/demo-apps/px-sock-shop/front-end:latest
         resources:
           limits:
             cpu: 300m
@@ -406,7 +406,7 @@ spec:
     spec:
       containers:
       - name: orders
-        image: gcr.io/pixie-oss/demo-apps/px-sock-shop/orders:latest
+        image: registry.baidubce.com/csm/demo-apps/px-sock-shop/orders:latest
         env:
          - name: ZIPKIN
            value: zipkin.jaeger.svc.cluster.local
@@ -559,7 +559,7 @@ spec:
     spec:
       containers:
       - name: queue-master
-        image: gcr.io/pixie-oss/demo-apps/px-sock-shop/queue-master:latest
+        image: registry.baidubce.com/csm/demo-apps/px-sock-shop/queue-master:latest
         env:
          - name: ZIPKIN
            value: zipkin.jaeger.svc.cluster.local
@@ -747,7 +747,7 @@ spec:
     spec:
       containers:
       - name: shipping
-        image: gcr.io/pixie-oss/demo-apps/px-sock-shop/shipping:latest
+        image: registry.baidubce.com/csm/demo-apps/px-sock-shop/shipping:latest
         env:
          - name: ZIPKIN
            value: zipkin.jaeger.svc.cluster.local

@@ -29,7 +29,7 @@ LATEST_BASE_IMAGE 	    := $(shell cat $(BASE_IMAGE_VERSION_FILE))
 DEV_IMAGE_VERSION := $(shell date "+%Y%m%d%H%M")
 
 ## The repository where the images are stored.
-REPOSITORY := gcr.io/pixie-oss/pixie-dev-public
+REPOSITORY := registry.baidubce.com/csm/pixie-dev-public
 
 LINTER_IMAGE_DIGEST := $$($(DOCKER) inspect --format='{{index .RepoDigests 0}}' \
 											 $(REPOSITORY)/linter_image:$(DEV_IMAGE_VERSION) | \

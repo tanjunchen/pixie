@@ -13,6 +13,6 @@ Run `update_ghcr.sh` in this directory to push image to the ghcr.io repo.
 The produced docker image's entrypoint is Python REPL environment. To run the client and server:
 
 ```
-docker run --name=server --rm gcr.io/pixie-oss/pixie-dev-public/python_grpc_1_19_0_helloworld:1.0 python helloworld/greeter_server.py
-docker run --network=container:server --rm gcr.io/pixie-oss/pixie-dev-public/python_grpc_1_19_0_helloworld:1.0 python helloworld/greeter_client.py
+docker run --name=server --rm registry.baidubce.com/csm/pixie-dev-public/python_grpc_1_19_0_helloworld:1.0 python helloworld/greeter_server.py
+docker run --network=container:server --rm registry.baidubce.com/csm/pixie-dev-public/python_grpc_1_19_0_helloworld:1.0 python helloworld/greeter_client.py
 ```

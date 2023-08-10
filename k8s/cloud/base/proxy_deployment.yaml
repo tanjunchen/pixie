@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: cloud-proxy-server
-        imagePullPolicy: IfNotPresent
-        image: gcr.io/pixie-oss/pixie-dev/cloud/proxy_server_image
+        imagePullPolicy: Always
+        image: registry.baidubce.com/csm/pixie-dev/cloud/proxy_server_image
         ports:
         - containerPort: 56000
           name: http2
@@ -95,7 +95,7 @@ spec:
           seccompProfile:
             type: RuntimeDefault
       - name: envoy
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         image: envoyproxy/envoy:v1.12.2@sha256:b36ee021fc4d285de7861dbaee01e7437ce1d63814ead6ae3e4dfcad4a951b2e
         command: ["envoy"]
         args: ["-c", "/etc/envoy.yaml", "--service-cluster", "$(POD_NAME)"]

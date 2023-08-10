@@ -26,7 +26,7 @@ GH_RELEASE_UPLOAD := $(TOT)/scripts/create_release_for_dev_artifact.sh
 
 DEV_EXTRAS_TAG = $$(grep DOCKER_IMAGE_TAG $(DOCKER_PROPERTIES_FILE) | cut -d'=' -f2)
 DEV_EXTRAS_DIGEST = $$(grep DEV_IMAGE_WITH_EXTRAS_DIGEST $(DOCKER_PROPERTIES_FILE) | cut -d'=' -f2)
-DEV_EXTRAS_IMAGE = "gcr.io/pixie-oss/pixie-dev-public/dev_image_with_extras:$(DEV_EXTRAS_TAG)"
+DEV_EXTRAS_IMAGE = "registry.baidubce.com/csm/pixie-dev-public/dev_image_with_extras:$(DEV_EXTRAS_TAG)"
 
 ## Clang deb parameters
 CLANG_VERSION := 15.0
@@ -37,14 +37,14 @@ CLANG_TAG="$(CLANG_VERSION)-$(CLANG_SUFFIX)"
 clang_deb_fname := "clang-$(CLANG_TAG).deb"
 clang_linters_deb_fname := "clang-linters-$(CLANG_TAG).deb"
 clang_gs_path :=  gs://pixie-dev-public/clang/$(CLANG_TAG)
-clang_deb_image_tag := "gcr.io/pixie-oss/pixie-dev-public/clang_deb_builder_image:$(CLANG_VERSION)"
+clang_deb_image_tag := "registry.baidubce.com/csm/pixie-dev-public/clang_deb_builder_image:$(CLANG_VERSION)"
 CLANG_BUILD_DIR := "$(BUILD_DIR)/clang-$(CLANG_TAG)"
 
 ## gperftools parameters
 GPERFTOOLS_DEB_IMAGE_VERSION := 2.10-pl1
 gperftools_deb_fname := gperftools-pixie-$(GPERFTOOLS_DEB_IMAGE_VERSION).deb
 gperftools_deb_gs_path :=  gs://pixie-dev-public/$(gperftools_deb_fname)
-gperftools_deb_image_tag := "gcr.io/pixie-oss/pixie-dev-public/gperftools_deb_image:$(GPERFTOOLS_DEB_IMAGE_VERSION)"
+gperftools_deb_image_tag := "registry.baidubce.com/csm/pixie-dev-public/gperftools_deb_image:$(GPERFTOOLS_DEB_IMAGE_VERSION)"
 
 ## graalvm parameters
 GRAALVM_IMAGE_VERSION := pl1
@@ -109,11 +109,11 @@ nats_image_tag := "ghcr.io/pixie-io/nats:$(NATS_IMAGE_VERSION)-scratch"
 
 ## Copybara image parameters.
 COPYBARA_IMAGE_VERSION := 20210420
-copybara_image_tag := "gcr.io/pixie-oss/pixie-dev-public/copybara:$(COPYBARA_IMAGE_VERSION)"
+copybara_image_tag := "registry.baidubce.com/csm/pixie-dev-public/copybara:$(COPYBARA_IMAGE_VERSION)"
 
 ## Elasticsearch image parameters.
 ELASTICSEARCH_IMAGE_VERSION := 7.6.0-patched1
-elasticsearch_image_tag := "gcr.io/pixie-oss/pixie-dev-public/elasticsearch:$(ELASTICSEARCH_IMAGE_VERSION)"
+elasticsearch_image_tag := "registry.baidubce.com/csm/pixie-dev-public/elasticsearch:$(ELASTICSEARCH_IMAGE_VERSION)"
 
 ## Linux kernel for qemu/BPF tests.
 KERNEL_BUILD_DIR := $(BUILD_DIR)/kernel_build
@@ -131,7 +131,7 @@ KERNEL_BUILD_TS := $(shell date +%Y%m%d%H%M%S)
 KERNEL_BUILD_GS_PATH := gs://pixie-dev-public/kernel-build/$(KERNEL_BUILD_TS)
 
 ETCD_IMAGE_VERSION := 3.5.9
-ETCD_IMAGE_TAG := "gcr.io/pixie-oss/pixie-dev-public/etcd:$(ETCD_IMAGE_VERSION)"
+ETCD_IMAGE_TAG := "registry.baidubce.com/csm/pixie-dev-public/etcd:$(ETCD_IMAGE_VERSION)"
 
 ##############################################
 # Clang Build
@@ -194,7 +194,7 @@ ifndef LINUX_HEADERS_REV
 	$(error set LINUX_HEADERS_REV to a valid value)
 endif
 	@mkdir -p $(@D)
-	linux_headers_image_tag="gcr.io/pixie-oss/pixie-dev-public:$*-$(LINUX_HEADERS_REV)"; \
+	linux_headers_image_tag="registry.baidubce.com/csm/pixie-dev-public:$*-$(LINUX_HEADERS_REV)"; \
 	$(DOCKER) build --build-arg KERN_VERSION=$* --build-arg ARCH=x86_64 linux_headers_image -t "$${linux_headers_image_tag}" && \
 	$(DOCKER) run --rm -v $(PWD)/$(LINUX_HEADER_ASSETS_BUILD_DIR):/output "$${linux_headers_image_tag}"
 
@@ -203,7 +203,7 @@ ifndef LINUX_HEADERS_REV
 	$(error set LINUX_HEADERS_REV to a valid value)
 endif
 	@mkdir -p $(@D)
-	linux_headers_image_tag="gcr.io/pixie-oss/pixie-dev-public:$*-$(LINUX_HEADERS_REV)"; \
+	linux_headers_image_tag="registry.baidubce.com/csm/pixie-dev-public:$*-$(LINUX_HEADERS_REV)"; \
 	$(DOCKER) build --build-arg KERN_VERSION=$* \
 		--build-arg ARCH=arm64 \
 		--build-arg CROSS_COMPILE=aarch64-linux-gnu- \
@@ -264,7 +264,7 @@ build_and_upload_elasticsearch_image:
 ##############################################
 $(KERNEL_BUILD_DIR)/linux-build-%.tar.gz: kernel_builder/Dockerfile kernel_builder/kernel.config kernel_builder/build_kernel.sh
 	@mkdir -p $(@D)
-	kernel_builder_image_tag="gcr.io/pixie-oss/kernel-builder:$*"; \
+	kernel_builder_image_tag="registry.baidubce.com/csm/kernel-builder:$*"; \
 	$(DOCKER) build --build-arg KERNEL_VERSION=$* kernel_builder -t "$${kernel_builder_image_tag}" && \
 	$(DOCKER) run --rm -v $(PWD)/$(KERNEL_BUILD_DIR):/output "$${kernel_builder_image_tag}"
 

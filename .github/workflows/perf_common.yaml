@@ -99,7 +99,7 @@ jobs:
         bazel run //src/e2e_test/perf_tool -- run --commit_sha "${{ steps.get-commit-sha.outputs.commit-sha }}" \
           --gke_project pixie-oss \
           --bq_project pixie-oss \
-          --container_repo "gcr.io/pixie-oss/pixie-perf" \
+          --container_repo "registry.baidubce.com/csm/pixie-perf" \
           --ds_report_id "9701de3b-f906-4dd2-a1e9-48ca0b1e07e6" \
           --tags "${{ inputs.tags }}" \
           --suite "${{ matrix.suite }}" \

@@ -29,7 +29,7 @@ spec:
       initContainers:
       - name: server-wait
         # yamllint disable-line rule:line-length
-        image: gcr.io/pixie-oss/pixie-dev-public/curl:multiarch-7.87.0@sha256:f7f265d5c64eb4463a43a99b6bf773f9e61a50aaa7cefaf564f43e42549a01dd
+        image: registry.baidubce.com/csm/pixie-dev-public/curl:multiarch-7.87.0
         # yamllint disable rule:indentation rule:line-length
         command: ['sh', '-c', 'set -xe;
           URL="${PROTOCOL}://${SERVICE_NAME}:${SERVICE_PORT}${HEALTH_PATH}";
@@ -49,7 +49,7 @@ spec:
           value: "http"
       containers:
       - name: app
-        image: gcr.io/pixie-oss/pixie-dev/src/e2e_test/protocol_loadtest/http/wrk:latest
+        image: registry.baidubce.com/csm/pixie-dev/src/e2e_test/protocol_loadtest/http/wrk:latest
         # yamllint disable rule:indentation rule:line-length
         command: ['sh', '-c', 'set -xe;
           while true; do

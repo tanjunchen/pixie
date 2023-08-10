@@ -17,8 +17,8 @@
 load("@bazel_skylib//rules:common_settings.bzl", "BuildSettingInfo")
 
 PROPRIETARY_PREFIX = "gcr.io/pl-dev-infra/"
-PUBLIC_PREFIX = "gcr.io/pixie-oss/pixie-prod/"
-DEV_PREFIX = "gcr.io/pixie-oss/pixie-dev/"
+PUBLIC_PREFIX = "registry.baidubce.com/csm/pixie-prod/"
+DEV_PREFIX = "registry.baidubce.com/csm/pixie-dev/"
 
 def image_replacements(image_map, existing_prefix, new_prefix):
     replacements = {}

@@ -38,8 +38,8 @@ tags=$(git for-each-ref --sort='-*authordate' --format '%(refname:short)' refs/t
     | grep "release/operator" | grep -v "\-")
 
 build_type="--//k8s:build_type=public"
-image_path="gcr.io/pixie-oss/pixie-prod/operator/operator_image:${release_tag}"
-deleter_image_path="gcr.io/pixie-oss/pixie-prod/operator/vizier_deleter:${release_tag}"
+image_path="registry.baidubce.com/csm/pixie-prod/operator/operator_image:${release_tag}"
+deleter_image_path="registry.baidubce.com/csm/pixie-prod/operator/vizier_deleter:${release_tag}"
 channel="stable"
 channels="stable,dev"
 bucket="pixie-dev-public"
@@ -48,8 +48,8 @@ bucket="pixie-dev-public"
 prev_tag=$(echo "$tags" | sed -n '2 p')
 if [[ $release_tag == *"-"* ]]; then
   build_type="--//k8s:build_type=dev"
-  image_path="gcr.io/pixie-oss/pixie-dev/operator/operator_image:${release_tag}"
-  deleter_image_path="gcr.io/pixie-oss/pixie-dev/operator/vizier_deleter:${release_tag}"
+  image_path="registry.baidubce.com/csm/pixie-dev/operator/operator_image:${release_tag}"
+  deleter_image_path="registry.baidubce.com/csm/pixie-dev/operator/vizier_deleter:${release_tag}"
   channel="dev"
   channels="dev"
   # Use the same bucket as above.
@@ -104,8 +104,8 @@ mv "$(pwd)/k8s/operator/helm/templates/deleter_tmp.yaml" "$(pwd)/k8s/operator/he
 
 # Build and push bundle.
 cd "${tmp_dir}"
-bundle_image="gcr.io/pixie-oss/pixie-prod/operator/bundle:${release_tag}"
-index_image="gcr.io/pixie-oss/pixie-prod/operator/bundle_index:0.0.1"
+bundle_image="registry.baidubce.com/csm/pixie-prod/operator/bundle:${release_tag}"
+index_image="registry.baidubce.com/csm/pixie-prod/operator/bundle_index:0.0.1"
 
 docker buildx create --name builder --driver docker-container --bootstrap
 docker buildx use builder

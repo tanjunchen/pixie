@@ -64,7 +64,7 @@ spec:
       containers:
       - name: etcd
         # yamllint disable-line rule:line-length
-        image: gcr.io/pixie-oss/pixie-dev-public/etcd:3.5.9@sha256:e18afc6dda592b426834342393c4c4bd076cb46fa7e10fa7818952cae3047ca9
+        image: registry.baidubce.com/csm/pixie-dev-public/etcd:3.5.9@sha256:e18afc6dda592b426834342393c4c4bd076cb46fa7e10fa7818952cae3047ca9
         ports:
         - containerPort: 2379
           name: client
