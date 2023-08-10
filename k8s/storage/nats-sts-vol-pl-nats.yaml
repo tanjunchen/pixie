@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nats-sts-vol-pl-nats-pv-0
+  labels:
+    app: pl-cloud
+    component: cloud-deps
+    name: pl-nats
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    type: DirectoryOrCreate
+    path: "/test/nat/nats-sts-vol-pl-nats-pv-0"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nats-sts-vol-pl-nats-pv-1
+  labels:
+    app: pl-cloud
+    component: cloud-deps
+    name: pl-nats
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    type: DirectoryOrCreate
+    path: "/test/nat/nats-sts-vol-pl-nats-pv-1"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nats-sts-vol-pl-nats-pv-2
+  labels:
+    app: pl-cloud
+    component: cloud-deps
+    name: pl-nats
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    type: DirectoryOrCreate
+    path: "/test/nat/nats-sts-vol-pl-nats-pv-2"
