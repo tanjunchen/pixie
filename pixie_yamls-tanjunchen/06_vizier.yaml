@@ -1,0 +1,15 @@
+apiVersion: px.dev/v1alpha1
+kind: Vizier
+metadata:
+  name: pixie
+  namespace: pl
+spec:
+  version: 0.14.5
+  deployKey: px-dep-cdd81cc8-b54a-4437-bd04-1e921bd3ff4e
+  cloudAddr: api-service.plc.svc.cluster.local:51200
+  disableAutoUpdate: false
+  useEtcdOperator: false
+  clusterName: tanjunchen
+  devCloudNamespace: plc
+  dataAccess: Full
+  dataCollectorParams:

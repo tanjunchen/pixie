@@ -16,3 +16,4 @@ pixie-prod/cloud/project_manager_server_image:0.1.7
 pixie-prod/cloud/scriptmgr_server_image:0.1.7
 pixie-prod/cloud/vzconn_server_image:0.1.7
 pixie-prod/cloud/vzmgr_server_image:0.1.7
+pixie-prod/operator/bundle_index:0.0.1
